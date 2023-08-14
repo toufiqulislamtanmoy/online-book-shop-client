@@ -1,0 +1,183 @@
+[
+    {
+      "id": 1,
+      "title": "The Catcher in the Rye",
+      "author": "J.D. Salinger",
+      "category": "Fiction",
+      "coverImage": "https://i.ibb.co/VmkKrQT/Book-cover-page-2-CRC.webp",
+      "copiesAvailable": 10,
+      "Price":470
+    },
+    {
+      "id": 2,
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "category": "Fiction",
+      "coverImage": "https://i.ibb.co/VmkKrQT/Book-cover-page-2-CRC.webp",
+      "copiesAvailable": 5,
+      "Price":470
+    },
+    {
+      "id": 3,
+      "title": "1984",
+      "author": "George Orwell",
+      "category": "Science Fiction",
+      "coverImage": "https://i.ibb.co/VmkKrQT/Book-cover-page-2-CRC.webp",
+      "copiesAvailable": 8,
+      "Price":470
+    },
+    {
+      "id": 4,
+      "title": "Pride and Prejudice",
+      "author": "Jane Austen",
+      "category": "Fiction",
+      "coverImage": "https://i.ibb.co/VmkKrQT/Book-cover-page-2-CRC.webp",
+      "copiesAvailable": 15,
+      "Price":470
+    },
+    {
+      "id": 5,
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "category": "Fiction",
+      "coverImage": "https://i.ibb.co/VmkKrQT/Book-cover-page-2-CRC.webp",
+      "copiesAvailable": 3,
+      "Price":470
+    },
+    {
+      "id": 6,
+      "title": "Brave New World",
+      "author": "Aldous Huxley",
+      "category": "Science Fiction",
+      "coverImage": "https://i.ibb.co/VmkKrQT/Book-cover-page-2-CRC.webp",
+      "copiesAvailable": 12,
+      "Price":470
+    },
+    {
+      "id": 7,
+      "title": "Harry Potter and the Sorcerer's Stone",
+      "author": "J.K. Rowling",
+      "category": "Fantasy",
+      "coverImage": "https://i.ibb.co/VmkKrQT/Book-cover-page-2-CRC.webp",
+      "copiesAvailable": 20,
+      "Price":470
+    },
+    {
+      "id": 8,
+      "title": "The Hobbit",
+      "author": "J.R.R. Tolkien",
+      "category": "Fantasy",
+      "coverImage": "https://i.ibb.co/VmkKrQT/Book-cover-page-2-CRC.webp",
+      "copiesAvailable": 7,
+      "Price":470
+    },
+    {
+      "id": 9,
+      "title": "The Alchemist",
+      "author": "Paulo Coelho",
+      "category": "Fiction",
+      "coverImage": "https://i.ibb.co/VmkKrQT/Book-cover-page-2-CRC.webp",
+      "copiesAvailable": 18,
+      "Price":470
+    },
+    {
+      "id": 10,
+      "title": "Lord of the Flies",
+      "author": "William Golding",
+      "category": "Fiction",
+      "coverImage": "https://i.ibb.co/VmkKrQT/Book-cover-page-2-CRC.webp",
+      "copiesAvailable": 9,
+      "Price":470
+    },
+    {
+        "id": 11,
+        "title": "The Hunger Games",
+        "author": "Suzanne Collins",
+        "category": "Science Fiction",
+        "coverImage": "https://i.ibb.co/VmkKrQT/Book-cover-page-2-CRC.webp",
+        "copiesAvailable": 6,
+        "Price":470
+      },
+      {
+        "id": 12,
+        "title": "The Da Vinci Code",
+        "author": "Dan Brown",
+        "category": "Mystery",
+        "coverImage": "https://i.ibb.co/VmkKrQT/Book-cover-page-2-CRC.webp",
+        "copiesAvailable": 14,
+        "Price":470
+      },
+      {
+        "id": 13,
+        "title": "The Chronicles of Narnia",
+        "author": "C.S. Lewis",
+        "category": "Fantasy",
+        "coverImage": "https://i.ibb.co/VmkKrQT/Book-cover-page-2-CRC.webp",
+        "copiesAvailable": 11,
+        "Price":470
+      },
+      {
+        "id": 14,
+        "title": "Gone Girl",
+        "author": "Gillian Flynn",
+        "category": "Mystery",
+        "coverImage": "https://i.ibb.co/VmkKrQT/Book-cover-page-2-CRC.webp",
+        "copiesAvailable": 8,
+        "Price":470
+      },
+      {
+        "id": 15,
+        "title": "The Fault in Our Stars",
+        "author": "John Green",
+        "category": "Young Adult",
+        "coverImage": "https://i.ibb.co/VmkKrQT/Book-cover-page-2-CRC.webp",
+        "copiesAvailable": 17,
+        "Price":470
+      },
+      {
+        "id": 16,
+        "title": "The Shining",
+        "author": "Stephen King",
+        "category": "Horror",
+        "coverImage": "https://i.ibb.co/VmkKrQT/Book-cover-page-2-CRC.webp",
+        "copiesAvailable": 9,
+        "Price":470
+      },
+      {
+        "id": 17,
+        "title": "The Road",
+        "author": "Cormac McCarthy",
+        "category": "Fiction",
+        "coverImage": "https://i.ibb.co/VmkKrQT/Book-cover-page-2-CRC.webp",
+        "copiesAvailable": 5,
+        "Price":470
+      },
+      {
+        "id": 18,
+        "title": "The Book Thief",
+        "author": "Markus Zusak",
+        "category": "Historical Fiction",
+        "coverImage": "https://i.ibb.co/VmkKrQT/Book-cover-page-2-CRC.webp",
+        "copiesAvailable": 13,
+        "Price":470
+      },
+      {
+        "id": 19,
+        "title": "The Girl on the Train",
+        "author": "Paula Hawkins",
+        "category": "Mystery",
+        "coverImage": "https://i.ibb.co/VmkKrQT/Book-cover-page-2-CRC.webp",
+        "copiesAvailable": 7,
+        "Price":470
+      },
+      {
+        "id": 20,
+        "title": "The Lord of the Rings",
+        "author": "J.R.R. Tolkien",
+        "category": "Fantasy",
+        "coverImage": "https://i.ibb.co/VmkKrQT/Book-cover-page-2-CRC.webp",
+        "copiesAvailable": 10,
+        "Price":470
+      }
+  ]
+  

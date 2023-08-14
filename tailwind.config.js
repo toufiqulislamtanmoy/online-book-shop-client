@@ -14,7 +14,9 @@ export default {
         sans: ['Inter', 'sans-serif'],
         Kaushan: ['Kaushan Script', 'cursive'],
         Poppins: ['Poppins', 'sans-serif'],
-        Pacifico : ['Pacifico', 'cursive']
+        Pacifico : ['Pacifico', 'cursive'],
+        Rubik : ['Rubik Vinyl', 'cursive'],
+        Russo : ['Russo One', 'sans-serif']
       },
     },
   },

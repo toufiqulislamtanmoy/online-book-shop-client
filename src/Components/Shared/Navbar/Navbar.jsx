@@ -8,6 +8,7 @@ const Navbar = () => {
     const navItem = (
         <>
             <li><Link className={`hover:text-info hover:transition-colors hover:duration-500 ${location.pathname === '/' ? 'text-info' : ''}`} to="/">Home</Link></li>
+            <li><Link className={`hover:text-info hover:transition-colors hover:duration-500 ${location.pathname === '/books' ? 'text-info' : ''}`} to="/">Books</Link></li>
 
             <li><Link className={`hover:text-info hover:transition-colors hover:duration-500 ${location.pathname === '/comics' ? 'text-info' : ''}`} to="/comics">Comics</Link></li>
             <li><Link className={`hover:text-info hover:transition-colors hover:duration-500 ${location.pathname === '/education' ? 'text-info' : ''}`} to="/education">Education</Link></li>
