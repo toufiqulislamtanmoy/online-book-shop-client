@@ -1,7 +1,14 @@
 import { useRef } from "react";
 import SectionTitle from "../../../Components/Shared/SectionTitle/SectionTitle";
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 const Contact = () => {
+    AOS.init({
+        offset: 200,
+        duration: 1000,
+        easing: 'ease-in-sine',
+        delay: 100,
+      });
     const form = useRef();
     return (
         <div className=" p-5 bg-[#bee9f224] bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-70 border border-gray-100  my-10 py-10 px-3 lg:px-16 rounded-lg" data-aos="fade-down-right">

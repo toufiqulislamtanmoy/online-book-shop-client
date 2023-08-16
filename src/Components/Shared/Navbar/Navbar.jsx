@@ -1,10 +1,18 @@
 import { Link, useLocation } from "react-router-dom";
 import logo from "../../../assets/Logo/Logo.png"
-import userProfilePic from "../../../assets/user/user.png"
+import { useContext } from "react";
+import { AuthContext } from "../../../Pages/Provider/AuthProviders";
 
 const Navbar = () => {
     const location = useLocation();
-    const user = true;
+    const {user,logout} = useContext(AuthContext);
+    
+
+    const handelLogOut = async () => {
+        logout(); // Wait for the logout operation to complete
+        console.log('Inside Handel Logout');
+    }
+
     const navItem = (
         <>
             <li><Link className={`hover:text-info hover:transition-colors hover:duration-500 ${location.pathname === '/' ? 'text-info' : ''}`} to="/">Home</Link></li>
@@ -17,7 +25,7 @@ const Navbar = () => {
         </>
     );
     return (
-        <div className="z-10 navbar h-full w-full bg-[#EFF6FF] rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-70 border border-gray-100 sticky top-0">
+        <div className="z-10 navbar max-w-7xl bg-[#EFF6FF] rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-70 border border-gray-100 fixed top-0 px-10">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -70,7 +78,7 @@ const Navbar = () => {
                             <div className="dropdown dropdown-end">
                                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                                     <div className="w-10 rounded-full">
-                                        <img src={userProfilePic} />
+                                        <img src={user.photoURL} />
                                     </div>
                                 </label>
                                 <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
@@ -81,7 +89,7 @@ const Navbar = () => {
                                         </a>
                                     </li>
                                     <li><a>Settings</a></li>
-                                    <li><a>Logout</a></li>
+                                    <li><button onClick={handelLogOut}>Logout</button></li>
                                 </ul>
                             </div>
                         </div>

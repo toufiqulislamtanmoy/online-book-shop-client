@@ -4,6 +4,8 @@ import {
 import Main from "../Layout/Main";
 import Home from "../Pages/Home/Home/Home";
 import Comics from "../Pages/Comics/Comics";
+import Login from "../Pages/Authentication/Login";
+import Signup from "../Pages/Authentication/Signup";
 
   const router = createBrowserRouter([
     {
@@ -17,6 +19,14 @@ import Comics from "../Pages/Comics/Comics";
         {
             path: "/comics",
             element: <Comics/>
+        },
+        {
+            path: "/signin",
+            element: <Login/>
+        },
+        {
+            path: "/signup",
+            element: <Signup/>
         },
       ]
     },
