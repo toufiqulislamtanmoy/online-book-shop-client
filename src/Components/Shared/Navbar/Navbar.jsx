@@ -2,14 +2,17 @@ import { Link, useLocation } from "react-router-dom";
 import logo from "../../../assets/Logo/Logo.png"
 import { useContext } from "react";
 import { AuthContext } from "../../../Pages/Provider/AuthProviders";
+import useUserRole from "../../../Hooks/useUserRole";
 
 const Navbar = () => {
     const location = useLocation();
     const {user,logout} = useContext(AuthContext);
+    const [role, refetch] = useUserRole();
     
 
     const handelLogOut = async () => {
         logout(); // Wait for the logout operation to complete
+        await refetch();
         console.log('Inside Handel Logout');
     }
 
@@ -22,10 +25,11 @@ const Navbar = () => {
             <li><Link className={`hover:text-info hover:transition-colors hover:duration-500 ${location.pathname === '/education' ? 'text-info' : ''}`} to="/education">Education</Link></li>
             <li><Link className={`hover:text-info hover:transition-colors hover:duration-500 ${location.pathname === '/magazines' ? 'text-info' : ''}`} to="/magazines">Magazines</Link></li>
             <li><Link className={`hover:text-info hover:transition-colors hover:duration-500 ${location.pathname === '/mystery' ? 'text-info' : ''}`} to="/mystery">Mystery & Thriller</Link></li>
+            {(role.role === 'admin' && user) && <li><Link to="/dashboard/requestforbook" className={`hover:text-info hover:transition-colors hover:duration-500 ${location.pathname === '/mystery' ? 'text-info' : ''}`}>Admin Panel</Link></li>}
         </>
     );
     return (
-        <div className="z-10 navbar max-w-7xl bg-[#EFF6FF] rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-70 border border-gray-100 fixed top-0 px-10">
+        <div className="z-10 navbar bg-[#c6dcf9] rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-70 border border-gray-100 px-10">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">

@@ -16,11 +16,11 @@ const Services = () => {
 
             <div className="lg:flex items-center justify-start gap-5" data-aos="fade-down-right">
                 <div className="w-full lg:w-1/3 px-5 lg:px-0">
-                    <h2 className="block lg:hidden text-3xl font-bold font-Pacifico my-5 border-b-2 py-3">Borrow Book</h2>
+                    <h2 className="block lg:hidden text-3xl font-bold font-Libre my-5 border-b-2 py-3">Borrow Book</h2>
                     <img className="rounded-lg" src={img1} alt="" />
                 </div>
                 <div className="w-full lg:w-2/3  px-5 lg:px-0">
-                    <h2 className="py-3 hidden lg:block text-3xl font-bold font-Pacifico my-5 border-b-2">Borrow Book</h2>
+                    <h2 className="py-3 hidden lg:block text-3xl font-bold font-Libre my-5 border-b-2">Borrow Book</h2>
                     <p className="my-1 font-Poppins text-justify">
                         Borrow-a-Book is an integral part of our comprehensive service offerings, designed to facilitate seamless access to a world of knowledge. With this service, patrons gain the opportunity to explore a diverse array of literary treasures, ranging from classic literature to modern research publications.
                     </p>
@@ -35,11 +35,11 @@ const Services = () => {
             {/*  */}
             <div className="lg:flex flex-row-reverse items-center justify-start gap-5" data-aos="fade-down-left">
                 <div className="w-full lg:w-1/3 px-5 lg:px-0">
-                    <h2 className="block lg:hidden text-3xl font-bold font-Pacifico my-5 border-b-2 py-3">Download Books</h2>
+                    <h2 className="block lg:hidden text-3xl font-bold font-Libre my-5 border-b-2 py-3">Download Books</h2>
                     <img className="rounded-lg" src={img2} alt="" />
                 </div>
                 <div className="w-full lg:w-2/3  px-5 lg:px-0 my-10">
-                    <h2 className="py-3 hidden lg:block text-3xl font-bold font-Pacifico my-5 border-b-2">Download Books</h2>
+                    <h2 className="py-3 hidden lg:block text-3xl font-bold font-Libre my-5 border-b-2">Download Books</h2>
                     <p className="my-1 font-Poppins text-justify">
                         Download-a-Book stands as a cornerstone of our exceptional service lineup, tailored to provide effortless access to a world of literary marvels. This offering grants users the privilege to delve into a vast expanse of reading materials, spanning timeless classics to cutting-edge research documents.
                     </p>

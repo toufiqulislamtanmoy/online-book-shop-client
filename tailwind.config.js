@@ -16,7 +16,8 @@ export default {
         Poppins: ['Poppins', 'sans-serif'],
         Pacifico : ['Pacifico', 'cursive'],
         Rubik : ['Rubik Vinyl', 'cursive'],
-        Russo : ['Russo One', 'sans-serif']
+        Russo : ['Russo One', 'sans-serif'],
+        Libre : ['Libre Baskerville', 'serif']
       },
     },
   },

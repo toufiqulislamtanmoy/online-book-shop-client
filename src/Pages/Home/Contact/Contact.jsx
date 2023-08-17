@@ -11,7 +11,7 @@ const Contact = () => {
       });
     const form = useRef();
     return (
-        <div className=" p-5 bg-[#bee9f224] bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-70 border border-gray-100  my-10 py-10 px-3 lg:px-16 rounded-lg" data-aos="fade-down-right">
+        <div className=" p-5 bg-[#d8f1f6f8] bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-70 border border-gray-100  my-10 py-10 px-3 lg:px-16 rounded-lg" data-aos="fade-down-right">
             <SectionTitle title="Contact Us"/>
         {/* <h1 className="text-5xl font-bold text-center my-10">Contact Me</h1> */}
         <form ref={form} className="space-y-5">

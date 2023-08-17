@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <AuthProviders>
-        <div className='max-w-7xl lg:mx-auto overflow-x-hidden'>
+        <div className='overflow-x-hidden'>
           <RouterProvider router={router} />
         </div>
       </AuthProviders>
