@@ -14,7 +14,7 @@ import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 const RecentlyAdded = () => {
     AOS.init({
         offset: 200,
-        duration: 1000,
+        duration: 800,
         easing: 'ease-in-sine',
         delay: 100,
     });
@@ -28,7 +28,7 @@ const RecentlyAdded = () => {
     return (
 
         <div className="bg-[#eff6ff4b] my-10" data-aos="fade-up-left">
-            <SectionTitle title={"Recently Added Books"} />
+            <SectionTitle title={"Recently Added Items"} />
             <div className="grid lg:grid-cols-3 grid-cols-1">
                 <div>
                     <h2 className='text-xl font-semibold font-Poppins my-2 text-center'>Books</h2>
@@ -39,13 +39,20 @@ const RecentlyAdded = () => {
                         className="mySwiper"
                     >
 
-                        {
+                        { books.length > 0 ?
                             books.map(book => <SwiperSlide key={book.id}>
                                 <Link to={`/bookdetail/${book._id}`} className="" >
                                     <img src={book.bookCoverImage} alt="" />
                                     <h2 className="bg-white text-black py- text-center">{book.bookName}</h2>
                                 </Link>
                             </SwiperSlide>)
+                            :
+                            <SwiperSlide className='border-2'>
+                                <div className='flex flex-col my-10'>
+                                    <FontAwesomeIcon className='text-5xl text-warning' icon={faTriangleExclamation} />
+                                    <h3>No Newspaper Added</h3>
+                                </div>
+                            </SwiperSlide>
                         }
                     </Swiper>
                 </div>
@@ -58,13 +65,20 @@ const RecentlyAdded = () => {
                         className="mySwiper"
                     >
 
-                        {
+                        { magazines.length > 0 ?
                             magazines.map(book => <SwiperSlide key={book.id}>
-                                <Link to={`/bookdetail/${book.id}`} className="" >
+                                <Link to={`/bookdetail/${book._id}`} className="" >
                                     <img src={book.bookCoverImage} alt="" />
                                     <h2 className="bg-white text-black py- text-center">{book.bookName}</h2>
                                 </Link>
                             </SwiperSlide>)
+                            :
+                            <SwiperSlide className='border-2'>
+                                <div className='flex flex-col my-10'>
+                                    <FontAwesomeIcon className='text-5xl text-warning' icon={faTriangleExclamation} />
+                                    <h3>No Newspaper Added</h3>
+                                </div>
+                            </SwiperSlide>
                             
                         }
                     </Swiper>
@@ -79,7 +93,7 @@ const RecentlyAdded = () => {
                     >
 
                         {
-                        newsPaper > 0 ?
+                        newsPaper.length > 0 ?
                             newsPaper.map(book => <SwiperSlide key={book.id}>
                                 <Link to={`/bookdetail/${book._id}`} className="" >
                                     <img src={book.bookCoverImage} alt="" />

@@ -29,7 +29,7 @@ const Login = () => {
                 profile_pic: user.photoURL,
                 role: "user"
             }
-            fetch("https://e-shopy-server.vercel.app/users", {
+            fetch("https://e-shopy-server-toufiqulislamtanmoy.vercel.app/users", {
                 method: "POST",
                 headers: {
                     'content-type': 'application/json'

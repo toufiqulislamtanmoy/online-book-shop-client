@@ -4,7 +4,7 @@ import banner from "../../../assets/Banner/animations/banner.json"
 
 const Banner = () => {
     return (
-        <div className='bg-[#F9F9FF] px-3 lg:px-16'>
+        <div className='bg-[#F9F9FF] px-3 lg:px-16 z-[-10]'>
             <div className='lg:flex flex-row-reverse items-center justify-center'>
                 <div className='w-full lg:w-1/2'>
                     <Lottie animationData={banner} loop={true} />

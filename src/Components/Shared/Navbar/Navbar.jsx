@@ -6,9 +6,9 @@ import useUserRole from "../../../Hooks/useUserRole";
 
 const Navbar = () => {
     const location = useLocation();
-    const {user,logout} = useContext(AuthContext);
+    const { user, logout } = useContext(AuthContext);
     const [role, refetch] = useUserRole();
-    
+
 
     const handelLogOut = async () => {
         logout(); // Wait for the logout operation to complete
@@ -16,46 +16,47 @@ const Navbar = () => {
         console.log('Inside Handel Logout');
     }
 
-    const navItem = (
-        <>
-            <li><Link className={`hover:text-info hover:transition-colors hover:duration-500 ${location.pathname === '/' ? 'text-info' : ''}`} to="/">Home</Link></li>
-            <li><Link className={`hover:text-info hover:transition-colors hover:duration-500 ${location.pathname === '/books' ? 'text-info' : ''}`} to="/">Books</Link></li>
 
-            <li><Link className={`hover:text-info hover:transition-colors hover:duration-500 ${location.pathname === '/comics' ? 'text-info' : ''}`} to="/comics">Comics</Link></li>
-            <li><Link className={`hover:text-info hover:transition-colors hover:duration-500 ${location.pathname === '/education' ? 'text-info' : ''}`} to="/education">Education</Link></li>
-            <li><Link className={`hover:text-info hover:transition-colors hover:duration-500 ${location.pathname === '/magazines' ? 'text-info' : ''}`} to="/magazines">Magazines</Link></li>
-            <li><Link className={`hover:text-info hover:transition-colors hover:duration-500 ${location.pathname === '/mystery' ? 'text-info' : ''}`} to="/mystery">Mystery & Thriller</Link></li>
-            {(role.role === 'admin' && user) && <li><Link to="/dashboard/requestforbook" className={`hover:text-info hover:transition-colors hover:duration-500 ${location.pathname === '/mystery' ? 'text-info' : ''}`}>Admin Panel</Link></li>}
-        </>
-    );
     return (
-        <div className="z-10 navbar bg-[#c6dcf9] rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-70 border border-gray-100 px-10">
+        <div className="navbar bg-[#c6dcf9] rounded-md bg-clip-padding backdrop-filter  bg-opacity-70 px-10">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                        {
-                            navItem
-                        }
+                        <li><Link className={`hover:text-info hover:transition-colors hover:duration-500 ${location.pathname === '/' ? 'text-info' : ''}`} to="/">Home</Link></li>
+
+                        <li><Link className={`hover:text-info hover:transition-colors hover:duration-500 ${location.pathname === '/books' ? 'text-info' : ''}`} to="/books">Books</Link></li>
+
+                        <li><Link className={`hover:text-info hover:transition-colors hover:duration-500 ${location.pathname === '/magazines' ? 'text-info' : ''}`} to="/magazines">Magazines</Link></li>
+
+                        <li><Link className={`hover:text-info hover:transition-colors hover:duration-500 z-20 ${location.pathname === '/newspaper' ? 'text-info' : ''}`} to="/newspaper">Newspaper</Link></li>
+
+                        {(role.role === 'admin' && user) && <li><Link to="/dashboard/requestforbook" className={`hover:text-info hover:transition-colors hover:duration-500 ${location.pathname === '/mystery' ? 'text-info' : ''}`}>Admin Panel</Link></li>}
                     </ul>
                 </div>
                 <Link to="/" className="w-16 normal-case text-xl hidden lg:block">
                     <img className="w-full" src={logo} alt="" />
                 </Link>
             </div>
-            <div className="navbar-center hidden lg:flex gap-3">
-                <ul className="flex items-center justify-center gap-4 px-1">
-                    {
-                        navItem
-                    }
+            <div className="navbar-center hidden lg:flex">
+                <ul className="menu menu-horizontal px-1">
+                    <li><Link className={`hover:text-info hover:transition-colors hover:duration-500 ${location.pathname === '/' ? 'text-info' : ''}`} to="/">Home</Link></li>
+
+                    <li><Link className={`hover:text-info hover:transition-colors hover:duration-500 ${location.pathname === '/books' ? 'text-info' : ''}`} to="/books">Books</Link></li>
+
+                    <li><Link className={`hover:text-info hover:transition-colors hover:duration-500 ${location.pathname === '/magazines' ? 'text-info' : ''}`} to="/magazines">Magazines</Link></li>
+
+                    <li><Link className={`hover:text-info hover:transition-colors hover:duration-500 z-20 ${location.pathname === '/newspaper' ? 'text-info' : ''}`} to="/newspaper">Newspaper</Link></li>
+
+                    {(role.role === 'admin' && user) && <li><Link to="/dashboard/requestforbook" className={`hover:text-info hover:transition-colors hover:duration-500 ${location.pathname === '/mystery' ? 'text-info' : ''}`}>Admin Panel</Link></li>}
                 </ul>
             </div>
             <div className="navbar-end">
                 {
                     user ?
-                        <div className="flex-none">
+                        <div className="flex space-x-3">
                             <div className="dropdown dropdown-end">
                                 <label tabIndex={0} className="btn btn-ghost btn-circle">
                                     <div className="indicator">
@@ -68,7 +69,7 @@ const Navbar = () => {
                                         <span className="font-bold text-lg">8 Items</span>
                                         <span className="text-info">Subtotal: $999</span>
                                         <div className="card-actions">
-                                        <Link
+                                            <Link
                                                 to='/'
                                                 className='bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition-all duration-300 delay-100 btn-block text-center'
 
@@ -85,12 +86,12 @@ const Navbar = () => {
                                         <img src={user.photoURL} />
                                     </div>
                                 </label>
-                                <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                                <ul tabIndex={0} className="z-20 menu menu-sm dropdown-content mt-3 p-2 shadow rounded-box w-52 bg-base-100">
                                     <li>
-                                        <a className="justify-between">
+                                        <Link to="/" className="justify-between">
                                             Profile
                                             <span className="badge">New</span>
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li><a>Settings</a></li>
                                     <li><button onClick={handelLogOut}>Logout</button></li>

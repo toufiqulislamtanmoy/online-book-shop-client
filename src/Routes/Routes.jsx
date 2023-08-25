@@ -11,6 +11,10 @@ import Dashboard from "../Layout/Dashboard";
 import BrowBookRequestList from "../Pages/AdminPanel/BrowBookRequestList/BrowBookRequestList";
 import AddBooks from "../Pages/AdminPanel/AddBooks/AddBooks";
 import CollectBooks from "../Pages/AdminPanel/CollectBook/CollectBooks";
+import Books from "../Pages/Books/Books";
+import Magazins from "../Pages/Magazins/Magazins";
+import Newspapers from "../Pages/Newspapers/Newspapers";
+
 
   const router = createBrowserRouter([
     {
@@ -24,6 +28,18 @@ import CollectBooks from "../Pages/AdminPanel/CollectBook/CollectBooks";
         {
             path: "/comics",
             element: <Comics/>
+        },
+        {
+            path: "/books",
+            element: <Books/>
+        },
+        {
+            path: "/magazines",
+            element: <Magazins/>
+        },
+        {
+            path: "/newspaper",
+            element: <Newspapers/>
         },
         {
             path: "/signin",
