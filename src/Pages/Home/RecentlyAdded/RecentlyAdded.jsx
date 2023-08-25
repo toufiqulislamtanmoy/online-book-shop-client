@@ -41,7 +41,7 @@ const RecentlyAdded = () => {
 
                         { books.length > 0 ?
                             books.map(book => <SwiperSlide key={book.id}>
-                                <Link to={`/bookdetail/${book._id}`} className="" >
+                                <Link to={`/bookdetails/${book._id}`} className="" >
                                     <img src={book.bookCoverImage} alt="" />
                                     <h2 className="bg-white text-black py- text-center">{book.bookName}</h2>
                                 </Link>
@@ -67,7 +67,7 @@ const RecentlyAdded = () => {
 
                         { magazines.length > 0 ?
                             magazines.map(book => <SwiperSlide key={book.id}>
-                                <Link to={`/bookdetail/${book._id}`} className="" >
+                                <Link to={`/bookdetails/${book._id}`} className="" >
                                     <img src={book.bookCoverImage} alt="" />
                                     <h2 className="bg-white text-black py- text-center">{book.bookName}</h2>
                                 </Link>
@@ -95,7 +95,7 @@ const RecentlyAdded = () => {
                         {
                         newsPaper.length > 0 ?
                             newsPaper.map(book => <SwiperSlide key={book.id}>
-                                <Link to={`/bookdetail/${book._id}`} className="" >
+                                <Link to={`/bookdetails/${book._id}`} className="" >
                                     <img src={book.bookCoverImage} alt="" />
                                     <h2 className="bg-white text-black py- text-center">{book.bookName}</h2>
                                 </Link>

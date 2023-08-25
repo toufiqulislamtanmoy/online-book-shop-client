@@ -14,6 +14,7 @@ import CollectBooks from "../Pages/AdminPanel/CollectBook/CollectBooks";
 import Books from "../Pages/Books/Books";
 import Magazins from "../Pages/Magazins/Magazins";
 import Newspapers from "../Pages/Newspapers/Newspapers";
+import BookDetails from "../Pages/BookDetails/BookDetails";
 
 
   const router = createBrowserRouter([
@@ -40,6 +41,10 @@ import Newspapers from "../Pages/Newspapers/Newspapers";
         {
             path: "/newspaper",
             element: <Newspapers/>
+        },
+        {
+            path: "/bookdetails/:id",
+            element:<PrivetRoute> <BookDetails/></PrivetRoute>
         },
         {
             path: "/signin",

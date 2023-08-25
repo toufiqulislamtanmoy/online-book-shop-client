@@ -5,11 +5,11 @@ const Card = ({book}) => {
     console.log("From Recent Card",book);
     const {_id,bookCoverImage,category,authorName,bookName,price} = book;
     return (
-        <Link className="tooltip" data-tip={bookName} to={`/bookdetail/${_id}`}>
+        <Link className="tooltip" data-tip={bookName} to={`/bookdetails/${_id}`}>
             <div className="card card-compact bg-base-100 shadow-xl" >
                 <div className="relative">
                     <figure>
-                        <img className="rounded-xl h-[220px]" src={bookCoverImage} alt="Shoes" />
+                        <img className="w-full h-[280px] rounded-t-xl" src={bookCoverImage} alt="Shoes" />
                     </figure>
                     <div className="absolute top-0 left-0 badge badge-secondary">{category}</div>
                 </div>
