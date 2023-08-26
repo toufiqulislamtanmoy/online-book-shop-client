@@ -1,20 +1,21 @@
 import { createContext, useEffect, useState } from 'react';
 import app from '../firebase/firebase.config';
 import {
-    GoogleAuthProvider, 
+    GoogleAuthProvider,
     createUserWithEmailAndPassword,
-    getAuth, 
+    getAuth,
     onAuthStateChanged,
     sendPasswordResetEmail,
-    signInWithEmailAndPassword, 
-    signInWithPopup, 
-    signOut, 
-    updateEmail, 
-    updateProfile } from "firebase/auth";
+    signInWithEmailAndPassword,
+    signInWithPopup,
+    signOut,
+    updateEmail,
+    updateProfile
+} from "firebase/auth";
 import axios from 'axios';
 export const AuthContext = createContext(null)
 const auth = getAuth(app);
-const AuthProviders = ({children}) => {
+const AuthProviders = ({ children }) => {
 
     const [user, setUser] = useState(null);
     const [loading, setloading] = useState(true);
@@ -23,6 +24,7 @@ const AuthProviders = ({children}) => {
     const googleProvider = new GoogleAuthProvider();
 
     const googleLogin = () => {
+        setloading(true);
         return signInWithPopup(auth, googleProvider);
     }
 
@@ -37,7 +39,7 @@ const AuthProviders = ({children}) => {
     }
 
     const updateUserProfile = (name, photourl) => {
-
+        setloading(true);
         return updateProfile(auth.currentUser, {
             displayName: name,
             photoURL: photourl
@@ -45,12 +47,14 @@ const AuthProviders = ({children}) => {
     }
 
     const forgetPassword = (email) => {
+        setloading(true);
         return sendPasswordResetEmail(auth, email);
     }
 
-    
-    const changedEmail = (email) =>{
-        return updateEmail(auth.currentUser,email);
+
+    const changedEmail = (email) => {
+        setloading(true);
+        return updateEmail(auth.currentUser, email);
     }
 
     const logout = () => {
@@ -63,15 +67,16 @@ const AuthProviders = ({children}) => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
             console.log("Current User From Auth Provider", currentUser);
-            if(currentUser){
-                axios.post('https://e-shopy-server-toufiqulislamtanmoy.vercel.app/jwt',{email:currentUser.email}).then(data => {
-                    localStorage.setItem("access-token",data.data.token);
-                    setloading(false)
+            if (currentUser) {
+                axios.post('https://e-shopy-server-toufiqulislamtanmoy.vercel.app/jwt', { email: currentUser.email }).then(data => {
+                    localStorage.setItem("access-token", data.data.token);
+                    setloading(false);
                 })
-            }else{
-                localStorage.removeItem("access-token")
+            } else {
+                localStorage.removeItem("access-token");
+                setloading(false);
             }
-            
+
         });
         return () => {
             return unsubscribe();
@@ -84,7 +89,7 @@ const AuthProviders = ({children}) => {
         loginUser,
         updateUserProfile,
         logout,
-        user, 
+        user,
         loading,
         googleLogin,
         changedEmail
