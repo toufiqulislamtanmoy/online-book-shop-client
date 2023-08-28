@@ -1,5 +1,6 @@
-.bg-below-cover{
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.bookOpen{
+    transition: transform 0.3s ease;
+}
+.bookOpen:hover{
+    box-shadow: 10px 10px 20px;
 }

@@ -4,17 +4,50 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookOpenReader, faCartPlus, faCircleCheck, faHandHoldingHeart, faTags } from "@fortawesome/free-solid-svg-icons";
 import './BookDetails.css';
 import WantToRead from "./WantToRead/WantToRead";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import Swal from "sweetalert2";
+import { useContext } from "react";
+import { AuthContext } from "../Provider/AuthProviders";
 
 const BookDetails = () => {
     const { id } = useParams();
     const [singleItem] = useSingleItemDetails(id);
-    console.log(singleItem.preview);
+    const { user } = useContext(AuthContext);
+    const [axiosSecure] = useAxiosSecure();
+    const handelBorrowBookRequest = (data) => {
+        const { _id, authorName, bookCoverImage, bookName, category } = data;
+        const currentDate = new Date();
+        currentDate.toLocaleDateString();
+        const borrowRequestData = {
+            bookId: _id,
+            authorName,
+            bookCoverImage,
+            bookName,
+            category,
+            requesteredName: user.displayName,
+            requesteredEmail: user.email,
+            requestedDate: currentDate.toLocaleDateString(),
+            status:"pending"
+            
+        }
+
+        axiosSecure.post('/borrowRequest', borrowRequestData).then(data => {
+            if (data.data.insertedId) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Item added Successful',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+        })
+    }
     return (
         <div>
             <div className="lg:flex justify-center gap-9 my-10 mx-5 lg:mx-0 ">
                 <div className="border-2 border-black p-5">
                     <figure className="cursor-pointer" onClick={() => window.my_modal_4.showModal()}>
-                        <img className="w-full h-[430px]" src={singleItem.bookCoverImage} alt="" />
+                        <img className="w-full h-[430px] transition-transform transform-gpu hover:-translate-x-2 bookOpen" src={singleItem.bookCoverImage} alt="" />
                     </figure>
                 </div>
                 <div className="font-Poppins">
@@ -37,7 +70,13 @@ const BookDetails = () => {
                             <button className="btn btn-wide rounded-none bg-transparent border-warning hover:bg-warning  hover:transition-colors hover:duration-1000 capitalize hover:text-white"><FontAwesomeIcon icon={faCartPlus} /> Add To Cart</button>
                         </div>
                         <div className="my-2">
-                            <button className="btn btn-wide rounded-none bg-transparent border-success hover:bg-success  hover:transition-colors hover:duration-1000 capitalize hover:text-white"><FontAwesomeIcon icon={faHandHoldingHeart} /> Borrow Request</button>
+                            <button type="button" onClick={() => handelBorrowBookRequest(singleItem)}
+                                className="btn btn-wide rounded-none bg-transparent border-success hover:bg-success hover:transition-colors hover:duration-1000 capitalize hover:text-white"
+                                disabled={singleItem.copiesAvailable < 1}
+                            >
+                                <FontAwesomeIcon icon={faHandHoldingHeart} /> Borrow Request
+                            </button>
+
                         </div>
                         <div className="my-2">
                             <button className="btn btn-wide rounded-none bg-transparent border-secondary hover:bg-secondary  hover:transition-colors hover:duration-1000 capitalize hover:text-white" onClick={() => window.my_modal_4.showModal()}><FontAwesomeIcon icon={faBookOpenReader} /> Read Book</button>
@@ -47,8 +86,8 @@ const BookDetails = () => {
                         {/* You can open the modal using ID.showModal() method */}
                         <dialog id="my_modal_4" className="modal">
                             <form method="dialog" className="modal-box w-11/12 max-w-5xl">
-                            <img className="my-10 border-black border-2 w-full p-5" src={singleItem.bookCoverImage} alt="" />
-                                <WantToRead preview={singleItem.preview}/>
+                                <img className="my-10 border-black border-2 w-full p-5" src={singleItem.bookCoverImage} alt="" />
+                                <WantToRead preview={singleItem.preview} />
                                 <div className="modal-action">
                                     {/* if there is a button, it will close the modal */}
                                     <button className="btn rounded-none bg-transparent border-info hover:bg-info  hover:transition-colors hover:duration-1000 capitalize hover:text-white">Close</button>

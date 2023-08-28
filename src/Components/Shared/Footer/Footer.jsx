@@ -8,7 +8,7 @@ import {
 
 const Footer = () => {
     return (
-        <footer className="footer p-5 lg:p-10 bg-[#EFF6FF] text-base-content">
+        <footer className=" footer p-5 lg:p-10 bg-[#EFF6FF] text-base-content">
             <div>
                 <img className="w-24" src={logo} alt="" />
             </div>
