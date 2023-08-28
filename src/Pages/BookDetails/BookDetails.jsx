@@ -11,11 +11,11 @@ import { AuthContext } from "../Provider/AuthProviders";
 
 const BookDetails = () => {
     const { id } = useParams();
-    const [singleItem] = useSingleItemDetails(id);
+    const { singleItem, refetch } = useSingleItemDetails(id);
     const { user } = useContext(AuthContext);
     const [axiosSecure] = useAxiosSecure();
     const handelBorrowBookRequest = (data) => {
-        const { _id, authorName, bookCoverImage, bookName, category } = data;
+        const { _id, authorName, bookCoverImage, bookName, category, copiesAvailable } = data;
         const currentDate = new Date();
         currentDate.toLocaleDateString();
         const borrowRequestData = {
@@ -24,6 +24,7 @@ const BookDetails = () => {
             bookCoverImage,
             bookName,
             category,
+            copiesAvailable,
             requesteredName: user.displayName,
             requesteredEmail: user.email,
             requestedDate: currentDate.toLocaleDateString(),
@@ -32,7 +33,8 @@ const BookDetails = () => {
         }
 
         axiosSecure.post('/borrowRequest', borrowRequestData).then(data => {
-            if (data.data.insertedId) {
+            refetch();
+            if (data.data.message === "success") {
                 Swal.fire({
                     icon: 'success',
                     title: 'Item added Successful',

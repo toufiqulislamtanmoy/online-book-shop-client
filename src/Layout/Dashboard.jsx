@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { FcMenu } from "react-icons/fc";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { AuthContext } from "../Pages/Provider/AuthProviders";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFileCirclePlus, faHandshake, faHouseChimney, faListCheck } from "@fortawesome/free-solid-svg-icons";
 
 const Dashboard = () => {
     const location = useLocation();
@@ -19,7 +21,7 @@ const Dashboard = () => {
                 <div className="drawer-side h-full">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
 
-                    <ul className="menu p-4 w-72 h-full bg-[#c6dcf9] rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-70 border border-gray-100">
+                    <ul className="menu p-4 w-72 h-full sticky bg-[#c6dcf9] rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-70 border border-gray-100">
                         {/* Sidebar content here */}
                         <div className=" bg-white p-5 rounded-lg">
                             <div className="avatar flex flex-col gap-5 items-center justify-center">
@@ -32,18 +34,27 @@ const Dashboard = () => {
                         <div className="border border-gray-600 my-5"></div>
                         <li>
                             <Link
+                                className={`hover:text-white hover:bg-gray-500 hover:transition-colors hover:duration-500 ${location.pathname === '/' ? 'bg-gray-400 bg-opacity-40' : ''}`}
+                                to="/"><FontAwesomeIcon icon={faHouseChimney} /> Home 
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
                                 className={`hover:text-white hover:bg-gray-500 hover:transition-colors hover:duration-500 ${location.pathname === '/dashboard/requestforbook' ? 'bg-gray-400 bg-opacity-40' : ''}`}
-                                to="/dashboard/requestforbook">Request For Books</Link>
+                                to="/dashboard/requestforbook"><FontAwesomeIcon icon={faListCheck} /> Request For Books
+                            </Link>
                         </li>
                         <li>
                             <Link
                                 className={`hover:text-white hover:bg-gray-500 hover:transition-colors hover:duration-500 ${location.pathname === '/dashboard/addbook' ? 'bg-gray-400 bg-opacity-40' : ''}`}
-                                to="/dashboard/addbook">Add Books</Link>
+                                to="/dashboard/addbook"><FontAwesomeIcon icon={faFileCirclePlus} /> Add Books
+                            </Link>
                         </li>
                         <li>
                             <Link
                                 className={`hover:text-white hover:bg-gray-500 hover:transition-colors hover:duration-500 ${location.pathname === '/dashboard/collectbook' ? 'bg-gray-400 bg-opacity-40' : ''}`}
-                                to="/dashboard/collectbook">Collect Books</Link>
+                                to="/dashboard/collectbook"><FontAwesomeIcon icon={faHandshake} /> Collect Books
+                            </Link>
                         </li>
 
                     </ul>

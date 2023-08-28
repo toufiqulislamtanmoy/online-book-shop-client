@@ -5,7 +5,7 @@ import { AuthContext } from '../Pages/Provider/AuthProviders';
 
 
 const axiosSecure = axios.create({
-  baseURL: 'https://e-shopy-server.vercel.app', 
+  baseURL: 'http://localhost:5000', 
 });
 
 

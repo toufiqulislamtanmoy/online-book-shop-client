@@ -5,7 +5,7 @@ const useAllbooks = () => {
     const {data: books = [], isLoading:loading, refetch} = useQuery({
         queryKey:['books'],
         queryFn: async () =>{
-            const res = await fetch('https://e-shopy-server.vercel.app/allBooks');
+            const res = await fetch('http://localhost:5000/allBooks');
             return res.json();
         }
     })
