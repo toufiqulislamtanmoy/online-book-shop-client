@@ -8,12 +8,16 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProviders";
+import useMyCartitem from "../../Hooks/useMyCartitem";
 
 const BookDetails = () => {
     const { id } = useParams();
     const { singleItem, refetch } = useSingleItemDetails(id);
     const { user } = useContext(AuthContext);
     const [axiosSecure] = useAxiosSecure();
+    const { cartRefetch } = useMyCartitem();
+
+    // Handle borrow request here
     const handelBorrowBookRequest = (data) => {
         const { _id, authorName, bookCoverImage, bookName, category, copiesAvailable } = data;
         const currentDate = new Date();
@@ -28,8 +32,8 @@ const BookDetails = () => {
             requesteredName: user.displayName,
             requesteredEmail: user.email,
             requestedDate: currentDate.toLocaleDateString(),
-            status:"pending"
-            
+            status: "pending"
+
         }
 
         axiosSecure.post('/borrowRequest', borrowRequestData).then(data => {
@@ -38,6 +42,37 @@ const BookDetails = () => {
                 Swal.fire({
                     icon: 'success',
                     title: 'Item added Successful',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+        })
+    }
+
+    // Handle added item in the cart here
+    const handelAddToCart = (data) => {
+        const { _id, authorName, bookCoverImage, bookName, category,downloadURL,price } = data;
+        const cartItemData = {
+            bookId: _id,
+            authorName,
+            bookCoverImage,
+            bookName,
+            category,
+            price,
+            downloadURL,
+            userName: user.displayName,
+            userEmail: user.email,
+            picture: user.photoURL,
+            paymentStatus: "pending"
+
+        }
+
+        axiosSecure.post('/addtocart', cartItemData).then(data => {
+            cartRefetch();
+            if (data.data.insertedId) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Item added Into Your Cart Successfully',
                     showConfirmButton: false,
                     timer: 1500
                 })
@@ -69,7 +104,7 @@ const BookDetails = () => {
 
                     <div className="my-10 lg:flex text-center gap-3">
                         <div className="my-2">
-                            <button className="btn btn-wide rounded-none bg-transparent border-warning hover:bg-warning  hover:transition-colors hover:duration-1000 capitalize hover:text-white"><FontAwesomeIcon icon={faCartPlus} /> Add To Cart</button>
+                            <button onClick={() => handelAddToCart(singleItem)} className="btn btn-wide rounded-none bg-transparent border-warning hover:bg-warning  hover:transition-colors hover:duration-1000 capitalize hover:text-white"><FontAwesomeIcon icon={faCartPlus} /> Add To Cart</button>
                         </div>
                         <div className="my-2">
                             <button type="button" onClick={() => handelBorrowBookRequest(singleItem)}

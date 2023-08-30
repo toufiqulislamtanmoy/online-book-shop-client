@@ -19,7 +19,7 @@ const useUserRole = () => {
   });
 
   useEffect(() => {
-    console.log("Role state updated:", role);
+    // console.log("Role state updated:", role);
   }, [role]);
 
   return [role, refetch];

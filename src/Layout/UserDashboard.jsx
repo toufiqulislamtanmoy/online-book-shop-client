@@ -3,9 +3,10 @@ import { FcMenu } from "react-icons/fc";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { AuthContext } from "../Pages/Provider/AuthProviders";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFileCirclePlus, faHandshake, faHouseChimney, faListCheck } from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping, faHandsPraying,  faHouseChimney } from "@fortawesome/free-solid-svg-icons";
 
-const Dashboard = () => {
+
+const UserDashboard = () => {
     const location = useLocation();
     const { user } = useContext(AuthContext);
     return (
@@ -38,24 +39,23 @@ const Dashboard = () => {
                                 to="/"><FontAwesomeIcon icon={faHouseChimney} /> Home 
                             </Link>
                         </li>
+
                         <li>
                             <Link
-                                className={`hover:text-white hover:bg-gray-500 hover:transition-colors hover:duration-500 ${location.pathname === '/dashboard/requestforbook' ? 'bg-gray-400 bg-opacity-40' : ''}`}
-                                to="/dashboard/requestforbook"><FontAwesomeIcon icon={faListCheck} /> Request For Books
+                                className={`hover:text-white hover:bg-gray-500 hover:transition-colors hover:duration-500 ${location.pathname === '/userdashboard/userCart' ? 'bg-gray-400 bg-opacity-40' : ''}`}
+                                to="/userdashboard/userCart"><FontAwesomeIcon icon={faCartShopping} /> My Cart Items
                             </Link>
                         </li>
+
+
+
                         <li>
                             <Link
-                                className={`hover:text-white hover:bg-gray-500 hover:transition-colors hover:duration-500 ${location.pathname === '/dashboard/addbook' ? 'bg-gray-400 bg-opacity-40' : ''}`}
-                                to="/dashboard/addbook"><FontAwesomeIcon icon={faFileCirclePlus} /> Add Books
+                                className={`hover:text-white hover:bg-gray-500 hover:transition-colors hover:duration-500 ${location.pathname === '/userdashboard/userBorrowBooks' ? 'bg-gray-400 bg-opacity-40' : ''}`}
+                                to="/userdashboard/userBorrowBooks"><FontAwesomeIcon icon={faHandsPraying} /> My Borrow Request
                             </Link>
                         </li>
-                        <li>
-                            <Link
-                                className={`hover:text-white hover:bg-gray-500 hover:transition-colors hover:duration-500 ${location.pathname === '/dashboard/collectbook' ? 'bg-gray-400 bg-opacity-40' : ''}`}
-                                to="/dashboard/collectbook"><FontAwesomeIcon icon={faHandshake} /> Collect Books
-                            </Link>
-                        </li>
+                        
 
                     </ul>
 
@@ -65,4 +65,4 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard;
+export default UserDashboard;
