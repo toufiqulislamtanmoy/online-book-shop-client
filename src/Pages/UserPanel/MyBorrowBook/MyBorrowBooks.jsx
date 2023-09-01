@@ -73,7 +73,7 @@ const MyBorrowBooks = () => {
                         </tbody>
                     </table> :
                     <div>
-                        <p>No Item added into your borrow request</p>
+                        <p className="text-center">No Item added into your borrow request</p>
                         <p className="flex items-center justify-center">
                             <BallTriangle
                                 height={100}

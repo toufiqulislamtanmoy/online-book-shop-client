@@ -3,7 +3,7 @@ import { FcMenu } from "react-icons/fc";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { AuthContext } from "../Pages/Provider/AuthProviders";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFileCirclePlus, faHandshake, faHouseChimney, faListCheck } from "@fortawesome/free-solid-svg-icons";
+import { faFileCirclePlus, faHouseChimney, faListCheck } from "@fortawesome/free-solid-svg-icons";
 
 const Dashboard = () => {
     const location = useLocation();
@@ -29,6 +29,7 @@ const Dashboard = () => {
                                     <img src={user.photoURL} />
                                 </div>
                                 <h3 className="flex justify-center">{user.displayName}</h3>
+                                <h3 className="flex justify-center">{user.email}</h3>
                             </div>
                         </div>
                         <div className="border border-gray-600 my-5"></div>
@@ -50,12 +51,7 @@ const Dashboard = () => {
                                 to="/dashboard/addbook"><FontAwesomeIcon icon={faFileCirclePlus} /> Add Books
                             </Link>
                         </li>
-                        <li>
-                            <Link
-                                className={`hover:text-white hover:bg-gray-500 hover:transition-colors hover:duration-500 ${location.pathname === '/dashboard/collectbook' ? 'bg-gray-400 bg-opacity-40' : ''}`}
-                                to="/dashboard/collectbook"><FontAwesomeIcon icon={faHandshake} /> Collect Books
-                            </Link>
-                        </li>
+                        
 
                     </ul>
 

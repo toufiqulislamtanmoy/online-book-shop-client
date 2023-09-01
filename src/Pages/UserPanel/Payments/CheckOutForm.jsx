@@ -18,7 +18,7 @@ const CheckOutForm = ({ checkOutDetail }) => {
     const [processing, setProcessing] = useState(false);
     const [clintSecret, setClintSecret] = useState('');
     console.log(checkOutDetail)
-    const { price, paymentStatus, downloadURL, category, bookName, bookId, authorName, bookCoverImage, _id } = checkOutDetail;
+    const { price, downloadURL, category, bookName, bookId, authorName, bookCoverImage, _id } = checkOutDetail;
     const navigate = useNavigate();
 
 
@@ -81,18 +81,21 @@ const CheckOutForm = ({ checkOutDetail }) => {
         setProcessing(false);
 
         if (paymentIntent?.status === "succeeded") {
+            const currentDate = new Date();
+            
             const paymentInfo = {
                 email: user?.email,
                 transactionId: paymentIntent.id,
                 price,
-                date: new Date(),
+                date: currentDate.toLocaleDateString(),
+                time: currentDate.toLocaleTimeString(),
                 bookName,
                 authorName,
                 userPhoto: user?.photoURL,
                 bookCoverImage,
                 downloadURL,
                 bookCategory: category,
-                paymentStatus,
+                paymentStatus: 'Paid',
                 bookId,
                 cartId: _id
 
@@ -105,7 +108,7 @@ const CheckOutForm = ({ checkOutDetail }) => {
                         title: 'Transaction Successful',
                         showConfirmButton: true,
                     })
-                    navigate('/');
+                    navigate('/userdashboard/purchaseHistory');
                 }
             })
         } else {
@@ -117,8 +120,8 @@ const CheckOutForm = ({ checkOutDetail }) => {
     }
     return (
         <div className="flex flex-col items-center bg-slate-200  rounded-md bg-clip-padding backdrop-filter  bg-opacity-70 text-[#fff] h-[100vh]">
-            <SectionTitle title={"Make Payment"}/>
-            <div className="w-1/2 mx-auto my-24 border-2 rounded-md shadow-md shadow-gray-800 bg-base-100 border-black p-10 ">
+            <SectionTitle title={"Make Payment"} />
+            <div className="w-full lg:w-1/2 mx-auto my-24 border-2 rounded-md shadow-md shadow-gray-800 bg-base-100 border-black p-10 ">
                 <form onSubmit={handleSubmit}>
                     <CardElement
                         options={{

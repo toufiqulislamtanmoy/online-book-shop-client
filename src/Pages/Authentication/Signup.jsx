@@ -36,7 +36,7 @@ const Signup = () => {
                         }
                         /********Insert user details in the database********/
 
-                        fetch('http://localhost:5000/users', {
+                        fetch('https://e-shopy-server.vercel.app/users', {
                             method: "POST",
                             headers: {
                                 'content-type': 'application/json'

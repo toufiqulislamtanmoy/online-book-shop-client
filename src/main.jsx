@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <AuthProviders>
-        <div className='overflow-x-hidden'>
+        <div className=''>
           <RouterProvider router={router} />
         </div>
       </AuthProviders>

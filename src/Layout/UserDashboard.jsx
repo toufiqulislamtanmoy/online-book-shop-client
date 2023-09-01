@@ -65,8 +65,8 @@ const UserDashboard = () => {
 
                         <li>
                             <Link
-                                className={`hover:text-white hover:bg-gray-500 hover:transition-colors hover:duration-500 ${location.pathname === '/userdashboard/mybooks' ? 'bg-gray-400 bg-opacity-40' : ''}`}
-                                to="/userdashboard/mybooks"><FontAwesomeIcon icon={faFolder} /> My Files
+                                className={`hover:text-white hover:bg-gray-500 hover:transition-colors hover:duration-500 ${location.pathname === '/userdashboard/myfile' ? 'bg-gray-400 bg-opacity-40' : ''}`}
+                                to="/userdashboard/myfile"><FontAwesomeIcon icon={faFolder} /> My Files
                             </Link>
                         </li>
                         

@@ -19,12 +19,16 @@ import UserDashboard from "../Layout/UserDashboard";
 import MyCart from "../Pages/UserPanel/MyCart/MyCart";
 import MyBorrowBooks from "../Pages/UserPanel/MyBorrowBook/MyBorrowBooks";
 import Payment from "../Pages/UserPanel/Payments/Payment";
+import PaymentHistory from "../Pages/UserPanel/PaymentHistory/PaymentHistory";
+import MyFile from "../Pages/UserPanel/MyFile/MyFile";
+import NotFound from "../Pages/NotFound/NotFound";
 
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Main />,
+        errorElement: <NotFound/>,
         children: [
             {
                 path: "/",
@@ -63,6 +67,7 @@ const router = createBrowserRouter([
     {
         path: "/dashboard",
         element: <PrivetRoute><Dashboard /></PrivetRoute>,
+        errorElement: <NotFound/>,
         children: [
             {
                 path: "requestforbook",
@@ -83,6 +88,7 @@ const router = createBrowserRouter([
     {
         path: "/userdashboard",
         element: <PrivetRoute><UserDashboard /></PrivetRoute>,
+        errorElement: <NotFound/>,
         children: [
             {
                 path: "userCart",
@@ -95,6 +101,14 @@ const router = createBrowserRouter([
             {
                 path: "checkout/:id",
                 element: <Payment />
+            },
+            {
+                path: "purchaseHistory",
+                element: <PaymentHistory />
+            },
+            {
+                path: "myfile",
+                element: <MyFile />
             },
 
         ]

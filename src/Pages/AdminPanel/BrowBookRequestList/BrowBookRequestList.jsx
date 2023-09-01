@@ -10,10 +10,11 @@ const BrowBookRequestList = () => {
    
 
     const [axiosSecure] = useAxiosSecure();
-    const handaleStatusRequest = (id, requestStatus) => {
+    const handaleStatusRequest = (id, requestStatus,copiesAvailable,bookId) => {
         console.log(requestStatus);
-        axiosSecure.put(`/updateBorrowRequestStatus/${id}`, { status: requestStatus }).then(data => {
-            if (data.data.message === "success") {
+        axiosSecure.put(`/updateBorrowRequestStatus/${id}`, { status: requestStatus,copiesAvailable,bookId }).then(data => {
+            console.log(data);
+            if (data.data.matchedCount > 0) {
                 refetch();
                 Swal.fire({
                     icon: 'success',
@@ -40,15 +41,15 @@ const BrowBookRequestList = () => {
 
                                     {borrowBook.status === "pending" ? (
                                         <>
-                                            <button onClick={() => handaleStatusRequest(borrowBook._id, 'accept')} className="btn rounded-full bg-transparent border-success hover:bg-success hover:transition-colors hover:duration-1000 capitalize hover:text-white">
+                                            <button onClick={() => handaleStatusRequest(borrowBook._id, 'accept',borrowBook.copiesAvailable,borrowBook.bookId)} className="btn rounded-full bg-transparent border-success hover:bg-success hover:transition-colors hover:duration-1000 capitalize hover:text-white">
                                                 <FontAwesomeIcon icon={faCheck} />
                                             </button>
-                                            <button onClick={() => handaleStatusRequest(borrowBook._id, 'reject')} className="btn rounded-full bg-transparent border-primary hover:bg-primary hover:transition-colors hover:duration-1000 capitalize hover:text-white">
+                                            <button onClick={() => handaleStatusRequest(borrowBook._id, 'reject',borrowBook.copiesAvailable,borrowBook.bookId)} className="btn rounded-full bg-transparent border-primary hover:bg-primary hover:transition-colors hover:duration-1000 capitalize hover:text-white">
                                                 <FontAwesomeIcon icon={faXmark} />
                                             </button>
                                         </>
                                     ) : borrowBook.status === "accept" ? (
-                                        <button onClick={() => handaleStatusRequest(borrowBook._id, 'collected')} className="btn rounded-full bg-transparent border-success hover:bg-success hover:transition-colors hover:duration-1000 capitalize hover:text-white">
+                                        <button onClick={() => handaleStatusRequest(borrowBook._id, 'collected',borrowBook.copiesAvailable, borrowBook.bookId)} className="btn rounded-full bg-transparent border-success hover:bg-success hover:transition-colors hover:duration-1000 capitalize hover:text-white">
                                             Collected
                                         </button>
                                     ) : borrowBook.status === "reject" ? (
