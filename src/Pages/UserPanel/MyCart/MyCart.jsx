@@ -74,7 +74,7 @@ const MyCart = () => {
                                         </td>
                                         <th>
                                             <div className="lg:flex gap-4">
-                                                <Link to="/" className="btn btn-xs rounded-md bg-secondary hover:bg-info  hover:transition-colors hover:duration-1000 capitalize text-white"><FontAwesomeIcon icon={faCreditCard} /></Link>
+                                                <Link to={`/userdashboard/checkout/${singleItem._id}`} className="btn btn-xs rounded-md bg-secondary hover:bg-info  hover:transition-colors hover:duration-1000 capitalize text-white"><FontAwesomeIcon icon={faCreditCard} /></Link>
 
 
 

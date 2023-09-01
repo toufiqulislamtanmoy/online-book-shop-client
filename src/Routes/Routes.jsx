@@ -18,6 +18,7 @@ import BookDetails from "../Pages/BookDetails/BookDetails";
 import UserDashboard from "../Layout/UserDashboard";
 import MyCart from "../Pages/UserPanel/MyCart/MyCart";
 import MyBorrowBooks from "../Pages/UserPanel/MyBorrowBook/MyBorrowBooks";
+import Payment from "../Pages/UserPanel/Payments/Payment";
 
 
 const router = createBrowserRouter([
@@ -90,6 +91,10 @@ const router = createBrowserRouter([
             {
                 path: "userBorrowBooks",
                 element: <MyBorrowBooks />
+            },
+            {
+                path: "checkout/:id",
+                element: <Payment />
             },
 
         ]

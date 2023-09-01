@@ -3,7 +3,7 @@ import { FcMenu } from "react-icons/fc";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { AuthContext } from "../Pages/Provider/AuthProviders";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping, faHandsPraying,  faHouseChimney } from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping, faClockRotateLeft, faFolder, faHandsPraying,  faHouseChimney } from "@fortawesome/free-solid-svg-icons";
 
 
 const UserDashboard = () => {
@@ -53,6 +53,20 @@ const UserDashboard = () => {
                             <Link
                                 className={`hover:text-white hover:bg-gray-500 hover:transition-colors hover:duration-500 ${location.pathname === '/userdashboard/userBorrowBooks' ? 'bg-gray-400 bg-opacity-40' : ''}`}
                                 to="/userdashboard/userBorrowBooks"><FontAwesomeIcon icon={faHandsPraying} /> My Borrow Request
+                            </Link>
+                        </li>
+
+                        <li>
+                            <Link
+                                className={`hover:text-white hover:bg-gray-500 hover:transition-colors hover:duration-500 ${location.pathname === '/userdashboard/purchaseHistory' ? 'bg-gray-400 bg-opacity-40' : ''}`}
+                                to="/userdashboard/purchaseHistory"><FontAwesomeIcon icon={faClockRotateLeft} /> Purchase History
+                            </Link>
+                        </li>
+
+                        <li>
+                            <Link
+                                className={`hover:text-white hover:bg-gray-500 hover:transition-colors hover:duration-500 ${location.pathname === '/userdashboard/mybooks' ? 'bg-gray-400 bg-opacity-40' : ''}`}
+                                to="/userdashboard/mybooks"><FontAwesomeIcon icon={faFolder} /> My Files
                             </Link>
                         </li>
                         
