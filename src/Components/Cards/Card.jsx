@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 
 
 const Card = ({book}) => {
-    console.log("From Recent Card",book);
     const {_id,bookCoverImage,category,authorName,bookName,price} = book;
     return (
         <Link className="tooltip" data-tip={bookName} to={`/bookdetails/${_id}`}>

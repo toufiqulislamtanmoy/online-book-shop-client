@@ -11,12 +11,11 @@ const Navbar = () => {
     const { user, logout } = useContext(AuthContext);
     const [role,refetch] = useUserRole();
 
-    console.log(cartItem);
+
     const totalPrice = cartItem.reduce((sum, obj) => sum + parseInt(obj.price), 0);
     const handelLogOut = async () => {
         logout(); // Wait for the logout operation to complete
         await refetch();
-        console.log('Inside Handel Logout');
     }
 
 

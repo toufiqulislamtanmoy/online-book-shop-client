@@ -4,10 +4,23 @@ import useAllbooks from "../../Hooks/useAllbooks";
 import PageHeader from "../../Components/Shared/PageHeader/PageHeader";
 import headerVideo from "../../assets/videos/allBooks.mp4"
 import { Link } from "react-router-dom";
+import { useState } from "react";
+
 
 const Books = () => {
     const [allBooks] = useAllbooks();
     const books = allBooks.filter(book => book.category !== 'Magazine' && book.category !== 'Newspaper');
+    const [searchText, setSearchText] = useState('');
+    const [filteredBooks, setFilteredBooks] = useState([]);
+
+    const handleSearch = () => {
+        const filteredResults = books.filter((book) =>
+            book.bookName.toLowerCase().includes(searchText.toLowerCase())
+        );
+        setFilteredBooks(filteredResults);
+    };
+
+
     return (
         <div>
             <PageHeader video={headerVideo} />
@@ -23,12 +36,17 @@ const Books = () => {
 
                     <div className="w-full md:w-1/3 px-3">
                         <form className="flex">
-                            <input type="text" placeholder="Search..." className="w-full border-1 outline-none p-3 rounded-md shadow-lg" />
-
+                            <input
+                                type="text"
+                                placeholder="Search..."
+                                className="w-full border-1 outline-none p-3 rounded-md shadow-lg"
+                                value={searchText}
+                                onChange={(e) => setSearchText(e.target.value)}
+                            />
                             <button
                                 type="button"
-                                className='bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition-all  duration-300 delay-100 shadow-lg'
-
+                                className='bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition-all duration-300 delay-100 shadow-lg'
+                                onClick={handleSearch}
                             >
                                 Search
                             </button>
@@ -38,9 +56,9 @@ const Books = () => {
 
                 </div>
                 <div className="p-5 bg-[#4ac4f826] grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4 w-full">
-                    {
-                        books.map(book => <Card key={book._id} book={book} />)
-                    }
+                    {filteredBooks.length > 0
+                        ? filteredBooks.map((book) => <Card key={book._id} book={book} />)
+                        : books.map((book) => <Card key={book._id} book={book} />)}
                 </div>
             </div>
         </div>
