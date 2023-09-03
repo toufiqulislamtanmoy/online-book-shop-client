@@ -3,7 +3,7 @@ import { FcMenu } from "react-icons/fc";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { AuthContext } from "../Pages/Provider/AuthProviders";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFileCirclePlus, faHouseChimney, faListCheck } from "@fortawesome/free-solid-svg-icons";
+import { faFileCirclePlus, faFilePen, faHouseChimney, faListCheck } from "@fortawesome/free-solid-svg-icons";
 
 const Dashboard = () => {
     const location = useLocation();
@@ -49,6 +49,12 @@ const Dashboard = () => {
                             <Link
                                 className={`hover:text-white hover:bg-gray-500 hover:transition-colors hover:duration-500 ${location.pathname === '/dashboard/addbook' ? 'bg-gray-400 bg-opacity-40' : ''}`}
                                 to="/dashboard/addbook"><FontAwesomeIcon icon={faFileCirclePlus} /> Add Books
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                className={`hover:text-white hover:bg-gray-500 hover:transition-colors hover:duration-500 ${location.pathname === '/dashboard/allbooks' ? 'bg-gray-400 bg-opacity-40' : ''}`}
+                                to="/dashboard/allbooks"><FontAwesomeIcon icon={faFilePen} /> Update Books
                             </Link>
                         </li>
                         

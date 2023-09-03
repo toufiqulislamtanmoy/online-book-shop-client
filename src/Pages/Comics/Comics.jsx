@@ -5,6 +5,7 @@ import SectionTitle from "../../Components/Shared/SectionTitle/SectionTitle";
 import useAllbooks from "../../Hooks/useAllbooks";
 import headerVideo from '../../assets/videos/comics.mp4'
 import { useState } from "react";
+import { ThreeDots } from "react-loader-spinner";
 
 const Comics = () => {
     const [books] = useAllbooks();
@@ -16,7 +17,11 @@ const Comics = () => {
         const filteredResults = comics.filter((book) =>
             book.bookName.toLowerCase().includes(searchText.toLowerCase())
         );
-        setFilteredBooks(filteredResults);
+        if (filteredResults.length < 1) {
+            setFilteredBooks({ notFound: true });
+        } else {
+            setFilteredBooks(filteredResults)
+        }
     };
     return (
         <div>
@@ -54,12 +59,29 @@ const Comics = () => {
 
 
                 </div>
-                <div className="p-5 bg-[#4ac4f826] grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4 w-full">
-                    {filteredBooks.length > 0
-                        ?filteredBooks.map(comic => <Card key={comic._id} book={comic} />)
-                        :comics.map((book) => <Card key={book._id} book={book} />)
-                    }
-                </div>
+                {filteredBooks.notFound ?
+                    <div className="flex items-center justify-center gap-2">
+                        <p className="">No Data found named  <span className="font-bold"> {searchText}</span></p>
+                        <ThreeDots
+                            height="80"
+                            width="80"
+                            radius="9"
+                            color="#4fa94d"
+                            ariaLabel="three-dots-loading"
+                            wrapperStyle={{}}
+                            wrapperClassName=""
+                            visible={true}
+                        />
+                    </div>
+
+                    :
+                    <div className="p-5 bg-[#4ac4f826] grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4 w-full">
+                        {filteredBooks.length > 0
+                            ? filteredBooks.map(comic => <Card key={comic._id} book={comic} />)
+                            : comics.map((book) => <Card key={book._id} book={book} />)
+                        }
+                    </div>
+                }
             </div>
         </div>
     );

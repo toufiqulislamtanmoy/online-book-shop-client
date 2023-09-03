@@ -22,6 +22,8 @@ import Payment from "../Pages/UserPanel/Payments/Payment";
 import PaymentHistory from "../Pages/UserPanel/PaymentHistory/PaymentHistory";
 import MyFile from "../Pages/UserPanel/MyFile/MyFile";
 import NotFound from "../Pages/NotFound/NotFound";
+import AllBookList from "../Pages/AdminPanel/UpdateBooks/AllBookList";
+import UpdateBooks from "../Pages/AdminPanel/UpdateBooks/UpdateBooks";
 
 
 const router = createBrowserRouter([
@@ -80,6 +82,14 @@ const router = createBrowserRouter([
             {
                 path: "collectbook",
                 element: <CollectBooks />
+            },
+            {
+                path: "allbooks",
+                element: <AllBookList />
+            },
+            {
+                path: "updateBook/:id",
+                element: <UpdateBooks />
             },
 
         ]

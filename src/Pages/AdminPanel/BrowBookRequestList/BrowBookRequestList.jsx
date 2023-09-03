@@ -12,13 +12,14 @@ const BrowBookRequestList = () => {
     const [axiosSecure] = useAxiosSecure();
     const handaleStatusRequest = (id, requestStatus,copiesAvailable,bookId) => {
         console.log(requestStatus);
-        axiosSecure.put(`/updateBorrowRequestStatus/${id}`, { status: requestStatus,copiesAvailable,bookId }).then(data => {
+        axiosSecure.patch(`/updateBorrowRequestStatus/${id}`, { status: requestStatus,copiesAvailable,bookId }).then(data => {
             console.log(data);
             if (data.data.matchedCount > 0) {
+                console.log(data);
                 refetch();
                 Swal.fire({
                     icon: 'success',
-                    title: 'Accept Borrow Request Successfully',
+                    title: 'Action Successfully',
                     showConfirmButton: false,
                 })
             }
@@ -27,9 +28,9 @@ const BrowBookRequestList = () => {
 
     console.log(borrowBooks);
     return (
-        <div className={`mb-10 ${borrowBooks.length < 6 ? 'h-[100vh]' : ''}`}>
+        <div className={`mb-10 ${borrowBooks.length < 3 ? 'h-[100vh]' : ''}`}>
             <SectionTitle title={'All Borrow Book Request'} />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 ">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mx-10">
                 {borrowBooks &&
                     borrowBooks.map(borrowBook =>
                         <div key={borrowBook._id} className="card card-compact border-2 border-black">

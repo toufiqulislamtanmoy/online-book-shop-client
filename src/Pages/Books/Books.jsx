@@ -5,6 +5,7 @@ import PageHeader from "../../Components/Shared/PageHeader/PageHeader";
 import headerVideo from "../../assets/videos/allBooks.mp4"
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { ThreeDots } from "react-loader-spinner";
 
 
 const Books = () => {
@@ -17,7 +18,11 @@ const Books = () => {
         const filteredResults = books.filter((book) =>
             book.bookName.toLowerCase().includes(searchText.toLowerCase())
         );
-        setFilteredBooks(filteredResults);
+        if (filteredResults.length < 1) {
+            setFilteredBooks({ notFound: true });
+        } else {
+            setFilteredBooks(filteredResults)
+        }
     };
 
 
@@ -55,11 +60,29 @@ const Books = () => {
 
 
                 </div>
-                <div className="p-5 bg-[#4ac4f826] grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4 w-full">
-                    {filteredBooks.length > 0
-                        ? filteredBooks.map((book) => <Card key={book._id} book={book} />)
-                        : books.map((book) => <Card key={book._id} book={book} />)}
-                </div>
+                {filteredBooks.notFound ?
+                    <div className="flex items-center justify-center gap-2">
+                        <p className="">No Data found named  <span className="font-bold"> {searchText}</span></p>
+                        <ThreeDots
+                            height="80"
+                            width="80"
+                            radius="9"
+                            color="#4fa94d"
+                            ariaLabel="three-dots-loading"
+                            wrapperStyle={{}}
+                            wrapperClassName=""
+                            visible={true}
+                        />
+                    </div>
+
+                    :
+                    <div className="p-5 bg-[#4ac4f826] grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4 w-full">
+                        {filteredBooks.length > 0
+                            ? filteredBooks.map((book) => <Card key={book._id} book={book} />)
+                            : books.map((book) => <Card key={book._id} book={book} />)
+                        }
+
+                    </div>}
             </div>
         </div>
     );
