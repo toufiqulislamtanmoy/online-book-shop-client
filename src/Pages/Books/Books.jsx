@@ -34,8 +34,10 @@ const Books = () => {
                 <div className="lg:flex justify-around items-center  bg-[#7c96a15f] py-5">
                     <div className="py-10 grid grid-cols-1 md:grid-cols-4 text-center space-x-2">
                         <Link to="/comics" className="font-bold text-[#a963ffa2] md:border-r-2 md:border-black px-3 hover:text-gray-700 hover:transition-colors hover:duration-500">Comics</Link>
-                        <Link to="/mysteryThriller" className="font-bold text-[#a963ffa2] md:border-r-2 md:border-black px-3 hover:text-gray-700 hover:transition-colors hover:duration-500">Novels</Link >
-                        <Link to="/comics" className="font-bold text-[#a963ffa2] md:border-r-2 md:border-black px-3 hover:text-gray-700 hover:transition-colors hover:duration-500">Education</Link>
+
+                        <Link to="/novels" className="font-bold text-[#a963ffa2] md:border-r-2 md:border-black px-3 hover:text-gray-700 hover:transition-colors hover:duration-500">Novels</Link >
+
+                        <Link to="/education" className="font-bold text-[#a963ffa2] md:border-r-2 md:border-black px-3 hover:text-gray-700 hover:transition-colors hover:duration-500">Education</Link>
                         <Link to="/mysteryThriller" className="font-bold text-[#a963ffa2] md:border-r-2 md:border-black px-3 hover:text-gray-700 hover:transition-colors hover:duration-500">Mystery & Thrillers</Link >
                     </div>
 

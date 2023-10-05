@@ -24,6 +24,9 @@ import MyFile from "../Pages/UserPanel/MyFile/MyFile";
 import NotFound from "../Pages/NotFound/NotFound";
 import AllBookList from "../Pages/AdminPanel/UpdateBooks/AllBookList";
 import UpdateBooks from "../Pages/AdminPanel/UpdateBooks/UpdateBooks";
+import Education from "../Pages/Education/Education";
+import MistryAndThriller from "../Pages/MystryAndThriller/MistryAndThriller";
+import Novels from "../Pages/Novels/Novels";
 
 
 const router = createBrowserRouter([
@@ -39,6 +42,18 @@ const router = createBrowserRouter([
             {
                 path: "/comics",
                 element: <Comics />
+            },
+            {
+                path: "/education",
+                element: <Education />
+            },
+            {
+                path: "/novels",
+                element: <Novels />
+            },
+            {
+                path: "/mysteryThriller",
+                element: <MistryAndThriller/>
             },
             {
                 path: "/books",

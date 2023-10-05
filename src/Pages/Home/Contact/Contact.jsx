@@ -1,7 +1,9 @@
 import { useRef } from "react";
 import SectionTitle from "../../../Components/Shared/SectionTitle/SectionTitle";
 import AOS from 'aos';
+import emailjs from '@emailjs/browser';
 import 'aos/dist/aos.css';
+import Swal from "sweetalert2";
 const Contact = () => {
     AOS.init({
         offset: 200,
@@ -9,12 +11,27 @@ const Contact = () => {
         easing: 'ease-in-sine',
         delay: 100,
       });
-    const form = useRef();
+      const form = useRef();
+      const sendEmail = (e) => {
+          e.preventDefault();
+          emailjs.sendForm(`${import.meta.env.VITE_serviecID}`, `${import.meta.env.VITE_templateID}`, form.current, `${import.meta.env.VITE_publickkey}`)
+              .then((result) => {
+                  console.log(result.text);
+                  form.current.reset();
+                  Swal.fire(
+                      'Your response has been send',
+                      'Thank you for your massage',
+                      'success'
+                    )
+              }, (error) => {
+                  console.log(error.text);
+              });
+      };
     return (
         <div className=" p-5 bg-[#d8f1f6f8] bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-70 border border-gray-100  my-10 py-10 px-3 lg:px-16 rounded-lg" data-aos="fade-down-right">
             <SectionTitle title="Contact Us"/>
         {/* <h1 className="text-5xl font-bold text-center my-10">Contact Me</h1> */}
-        <form ref={form} className="space-y-5">
+        <form ref={form} onSubmit={sendEmail} className="space-y-5">
             <div className="form-control">
                 <label className="label">
                     <span className="label-text">Your Name</span>

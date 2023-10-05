@@ -116,6 +116,7 @@ const AddBooks = () => {
                                 <option>Comics</option>
                                 <option>Education</option>
                                 <option>Mystery & Thriller</option>
+                                <option>Novels</option>
                                 <option>Magazine</option>
                                 <option>Newspaper</option>
                             </select>
