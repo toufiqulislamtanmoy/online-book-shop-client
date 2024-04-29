@@ -27,7 +27,7 @@ const RecentlyAdded = () => {
 
     return (
 
-        <div className="bg-[#eff6ff4b] my-10" data-aos="fade-up-left">
+        <div className="bg-[#eff6ff4b] my-10" >
             <SectionTitle title={"Recently Added Items"} />
             <div className="grid lg:grid-cols-3 grid-cols-1">
                 <div>
@@ -39,13 +39,17 @@ const RecentlyAdded = () => {
                         className="mySwiper"
                     >
 
-                        { books.length > 0 ?
-                            books.map(book => <SwiperSlide key={book.id}>
-                                <Link to={`/bookdetails/${book._id}`} className="" >
-                                    <img src={book.bookCoverImage} alt="" />
-                                    <h2 className="bg-white text-black py- text-center">{book.bookName}</h2>
-                                </Link>
-                            </SwiperSlide>)
+                        {books.length > 0 ?
+                            books.map((book, ind) =>
+                                <SwiperSlide key={book.id}
+                                    data-aos="fade-up-left"
+                                    data-aos-delay={200 * ind}
+                                >
+                                    <Link to={`/bookdetails/${book._id}`} className="" >
+                                        <img src={book.bookCoverImage} alt="" />
+                                        <h2 className="bg-white text-black py- text-center">{book.bookName}</h2>
+                                    </Link>
+                                </SwiperSlide>)
                             :
                             <SwiperSlide className='border-2'>
                                 <div className='flex flex-col my-10'>
@@ -65,8 +69,11 @@ const RecentlyAdded = () => {
                         className="mySwiper"
                     >
 
-                        { magazines.length > 0 ?
-                            magazines.map(book => <SwiperSlide key={book.id}>
+                        {magazines.length > 0 ?
+                            magazines.map((book, ind) => <SwiperSlide key={book.id}
+                                data-aos="fade-up-left"
+                                data-aos-delay={200 * ind}
+                            >
                                 <Link to={`/bookdetails/${book._id}`} className="" >
                                     <img src={book.bookCoverImage} alt="" />
                                     <h2 className="bg-white text-black py- text-center">{book.bookName}</h2>
@@ -79,7 +86,7 @@ const RecentlyAdded = () => {
                                     <h3>No Newspaper Added</h3>
                                 </div>
                             </SwiperSlide>
-                            
+
                         }
                     </Swiper>
                 </div>
@@ -93,20 +100,23 @@ const RecentlyAdded = () => {
                     >
 
                         {
-                        newsPaper.length > 0 ?
-                            newsPaper.map(book => <SwiperSlide key={book.id}>
-                                <Link to={`/bookdetails/${book._id}`} className="" >
-                                    <img src={book.bookCoverImage} alt="" />
-                                    <h2 className="bg-white text-black py- text-center">{book.bookName}</h2>
-                                </Link>
-                            </SwiperSlide>)
-                            :
-                            <SwiperSlide className='border-2'>
-                                <div className='flex flex-col my-10'>
-                                    <FontAwesomeIcon className='text-5xl text-warning' icon={faTriangleExclamation} />
-                                    <h3>No Newspaper Added</h3>
-                                </div>
-                            </SwiperSlide>
+                            newsPaper.length > 0 ?
+                                newsPaper.map((book, ind) => <SwiperSlide key={book.id}
+                                    data-aos="fade-up-left"
+                                    data-aos-delay={200 * ind}
+                                >
+                                    <Link to={`/bookdetails/${book._id}`} className="" >
+                                        <img src={book.bookCoverImage} alt="" />
+                                        <h2 className="bg-white text-black py- text-center">{book.bookName}</h2>
+                                    </Link>
+                                </SwiperSlide>)
+                                :
+                                <SwiperSlide className='border-2'>
+                                    <div className='flex flex-col my-10'>
+                                        <FontAwesomeIcon className='text-5xl text-warning' icon={faTriangleExclamation} />
+                                        <h3>No Newspaper Added</h3>
+                                    </div>
+                                </SwiperSlide>
                         }
                     </Swiper>
                 </div>

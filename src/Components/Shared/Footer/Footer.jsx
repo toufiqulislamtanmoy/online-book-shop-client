@@ -21,9 +21,9 @@ const Footer = () => {
             <div>
                 <span className="footer-title">Social Contact</span>
                 <div className="grid grid-flow-col gap-4 text-2xl">
-                    <Link className="hover:text-info" to=""><FaFacebook /></Link>
-                    <Link className="hover:text-info" to=""><FaTwitter /></Link>
-                    <Link className="hover:text-info" to=""><FaInstagramSquare /></Link>
+                    <Link to="https://www.facebook.com/sharier007" className="hover:text-info" ><FaFacebook /></Link>
+                    <Link  className="hover:text-info" to="https://www.facebook.com/sharier007"><FaTwitter /></Link>
+                    <Link className="hover:text-info" to="https://www.instagram.com/sharier007/"><FaInstagramSquare /></Link>
                 </div>
             </div>
             <div>
